@@ -42,6 +42,7 @@
         <li><a href="#captures">Captures</a></li>
         <li><a href="#nouveautes">Nouveautés</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-small" href="#telecharger">Télécharger</a>
     </nav>
@@ -443,6 +444,64 @@
         </details>
       </div>
     </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section wrap" id="contact">
+      <header class="section-head">
+        <p class="kicker mono">08 — Contact</p>
+        <h2>Un souci, une idée&nbsp;?</h2>
+        <p class="section-sub">Le formulaire prépare un ticket sur GitHub&nbsp;: tu le relis, puis tu
+          l'envoies depuis ton compte GitHub (gratuit).</p>
+      </header>
+
+      <form class="contact reveal" data-issue-form novalidate>
+        <fieldset class="contact-kinds">
+          <legend class="mono dl-label">Type</legend>
+          <label><input type="radio" name="kind" value="bug" checked><span>Bug</span></label>
+          <label><input type="radio" name="kind" value="reconnaissance"><span>Carte mal reconnue</span></label>
+          <label><input type="radio" name="kind" value="idee"><span>Idée</span></label>
+          <label><input type="radio" name="kind" value="question"><span>Question</span></label>
+        </fieldset>
+
+        <div class="field field-wide">
+          <label for="f-title">Résumé</label>
+          <input id="f-title" name="title" type="text" required maxlength="120"
+                 placeholder="Ex. : le scanner confond deux Dracaufeu">
+        </div>
+
+        <div class="field field-wide" data-only="reconnaissance" hidden>
+          <label for="f-card">Carte concernée</label>
+          <input id="f-card" name="card" type="text" maxlength="160"
+                 placeholder="Nom, numéro, extension, langue — ex. : Blindalys 009/196, Origine Perdue, FR">
+        </div>
+
+        <div class="field field-wide">
+          <label for="f-body">Description</label>
+          <textarea id="f-body" name="body" rows="6" required maxlength="4000"
+                    placeholder="Ce qui se passe, ce qui était attendu, comment le reproduire…"></textarea>
+        </div>
+
+        <div class="field" data-hide="idee">
+          <label for="f-version">Version de l'app</label>
+          <input id="f-version" name="version" type="text" maxlength="20" data-latest-value>
+        </div>
+
+        <div class="field" data-hide="idee">
+          <label for="f-device">Téléphone et Android <span class="opt">facultatif</span></label>
+          <input id="f-device" name="device" type="text" maxlength="80" placeholder="Ex. : Pixel 7, Android 14">
+        </div>
+
+        <div class="contact-foot field-wide">
+          <p class="contact-note">Le ticket sera <b>public</b>&nbsp;: n'y mets pas d'informations personnelles.
+            Pour une carte mal reconnue, tu pourras y glisser une photo sur GitHub.</p>
+          <button class="btn" type="submit">
+            Préparer le ticket sur GitHub
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M7 17 17 7m0 0H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <p class="contact-error" role="alert" data-form-error hidden></p>
+      </form>
+    </section>
   </main>
 
   <footer class="foot">
@@ -454,6 +513,7 @@
       <nav class="foot-links" aria-label="Liens de pied de page">
         <a href="#telecharger">Télécharger</a>
         <a href="#nouveautes">Nouveautés</a>
+        <a href="#contact">Signaler un problème</a>
         <a href="https://github.com/txreplay/txswap-releases/releases" rel="noopener">Versions sur GitHub</a>
       </nav>
       <p class="legal">

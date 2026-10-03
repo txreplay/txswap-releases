@@ -41,6 +41,9 @@
     document.querySelectorAll('[data-latest="apk"]').forEach(function (el) {
       el.href = apkUrl;
     });
+    document.querySelectorAll("[data-latest-value]").forEach(function (el) {
+      if (!el.dataset.touched) el.value = values.version;
+    });
   }
 
   function fromApi(release) {
@@ -196,6 +199,70 @@
     });
   }
 
+  /* ---------- Formulaire de contact → ticket GitHub pré-rempli ---------- */
+
+  // Un modèle par type (.github/ISSUE_TEMPLATE) : c'est lui qui pose
+  // l'étiquette, le paramètre `labels` n'étant appliqué qu'aux membres du dépôt.
+  var issueKinds = {
+    bug: { template: "bug.md", prefix: "[Bug] ", label: "Bug" },
+    reconnaissance: { template: "reconnaissance.md", prefix: "[Reconnaissance] ", label: "Carte mal reconnue" },
+    idee: { template: "idee.md", prefix: "[Idée] ", label: "Idée" },
+    question: { template: "question.md", prefix: "[Question] ", label: "Question" },
+  };
+
+  function setupIssueForm() {
+    var form = document.querySelector("[data-issue-form]");
+    if (!form) return;
+    var errorEl = form.querySelector("[data-form-error]");
+
+    form.querySelectorAll("[data-latest-value]").forEach(function (el) {
+      el.addEventListener("input", function () { el.dataset.touched = "1"; });
+    });
+
+    function syncKind() {
+      var kind = form.elements.kind.value;
+      form.querySelectorAll("[data-only]").forEach(function (el) { el.hidden = el.dataset.only !== kind; });
+      form.querySelectorAll("[data-hide]").forEach(function (el) { el.hidden = el.dataset.hide === kind; });
+    }
+    form.addEventListener("change", function (e) {
+      if (e.target.name === "kind") syncKind();
+    });
+    syncKind();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = form.elements;
+      var kind = issueKinds[f.kind.value];
+      var title = f.title.value.trim();
+      var description = f.body.value.trim();
+
+      var missing = !title ? f.title : !description ? f.body : null;
+      if (missing) {
+        errorEl.textContent = !title ? "Ajoute un résumé en une ligne." : "Décris le problème ou l'idée en quelques mots.";
+        errorEl.hidden = false;
+        missing.focus();
+        return;
+      }
+      errorEl.hidden = true;
+
+      var lines = ["**Type** : " + kind.label];
+      if (f.kind.value !== "idee") {
+        lines.push("**Version de l'app** : " + (f.version.value.trim() || "?"));
+        lines.push("**Téléphone et Android** : " + (f.device.value.trim() || "?"));
+      }
+      if (f.kind.value === "reconnaissance") {
+        lines.push("**Carte concernée** : " + (f.card.value.trim() || "?"));
+      }
+      lines.push("", "### Description", "", description, "", "---", "_Préparé depuis le site txSwap._");
+
+      var url = "https://github.com/" + data.repo + "/issues/new" +
+        "?template=" + encodeURIComponent(kind.template) +
+        "&title=" + encodeURIComponent(kind.prefix + title) +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+      window.open(url, "_blank", "noopener");
+    });
+  }
+
   /* ---------- Apparition au défilement ---------- */
 
   // Le masquage initial (.js .reveal) est posé par le script du <head>.
@@ -225,6 +292,7 @@
   setupLedger();
   setupCopy();
   setupLightbox();
+  setupIssueForm();
   observeReveals(document);
 
   loadReleases()
