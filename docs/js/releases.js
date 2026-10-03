@@ -5,6 +5,9 @@
  * `fallback` sert quand l'API GitHub ne répond pas (hors-ligne, quota de
  * 60 requêtes par heure et par IP dépassé) : le garder aligné sur la
  * dernière entrée publiée.
+ *
+ * GitHub Pages met les fichiers en cache 10 min : après toute modification
+ * d'un .css ou .js, incrémenter le `?v=` de ses balises dans index.html.
  */
 window.TXSWAP_RELEASES = {
   repo: "txreplay/txswap-releases",
