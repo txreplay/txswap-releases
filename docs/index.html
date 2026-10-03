@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>txSwap — l'échange de cartes Pokémon, réglé à la table</title>
+  <meta name="description" content="txSwap scanne les cartes Pokémon posées sur la table, les reconnaît hors-ligne, les cote sur Cardmarket et calcule l'écart de l'échange. Application Android gratuite, sans compte.">
+  <meta name="theme-color" content="#0B0C0E">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="txSwap">
+  <meta property="og:title" content="txSwap — scanne, cote, équilibre">
+  <meta property="og:description" content="L'échange de cartes Pokémon, réglé à la table. Reconnaissance 100 % hors-ligne, cote Cardmarket, écart recalculé à chaque coche. Android, gratuit.">
+  <link rel="canonical" href="https://txreplay.github.io/txswap-releases/">
+  <meta property="og:url" content="https://txreplay.github.io/txswap-releases/">
+  <meta property="og:image" content="https://txreplay.github.io/txswap-releases/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo txSwap et capture d'un échange en cours entre deux joueurs">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/space-grotesk-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jetbrains-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="top">
+    <nav class="nav wrap" aria-label="Navigation principale">
+      <a class="brand" href="#" aria-label="txSwap, retour en haut">
+        <img src="img/logo.svg" alt="" width="22" height="27">
+        <span>txSwap</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#fonctionnement">Fonctionnement</a></li>
+        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+        <li><a href="#captures">Captures</a></li>
+        <li><a href="#nouveautes">Nouveautés</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-small" href="#telecharger">Télécharger</a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <!-- ================= HERO ================= -->
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">
+          <span class="dot" aria-hidden="true"></span>
+          Android · gratuit · <span data-latest="version">v0.2.0</span>
+        </p>
+        <h1 class="reveal">L'échange de cartes,<br><em>réglé à la table.</em></h1>
+        <p class="lead reveal">
+          Chacun pose ses cartes. txSwap les reconnaît <strong>sans réseau</strong>, les cote
+          sur Cardmarket et range chacune de son côté. Tu décoches ce qui ne s'échange pas&nbsp;:
+          l'écart se recalcule aussitôt.
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn" href="#telecharger" data-latest-link>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Télécharger l'APK
+          </a>
+          <a class="btn btn-ghost" href="#installer">Comment l'installer</a>
+        </div>
+        <p class="hero-meta mono reveal">
+          Android 8.0+ · <span data-latest="size">49 Mo</span> · iPhone&nbsp;: bientôt
+        </p>
+      </div>
+
+      <div class="hero-visual reveal">
+        <figure class="phone phone-hero">
+          <img src="img/scan.webp" width="720" height="1600"
+               alt="Le viseur de txSwap : une carte Blindalys posée dans le cadre-guide, le nom est déjà lu.">
+        </figure>
+
+        <!-- Le grand livre : les vraies cartes d'un échange, cochables. -->
+        <div class="ledger" aria-labelledby="ledger-title">
+          <p class="ledger-head mono" id="ledger-title">Échange avec Camille · 03/10</p>
+          <div class="ledger-cols">
+            <fieldset class="ledger-side" data-side="me">
+              <legend class="mono">Moi</legend>
+              <label><input type="checkbox" checked data-v="108.92"><span>Mew-ex <small>152/128</small></span><b class="mono">108,92</b></label>
+              <label><input type="checkbox" checked data-v="62.51"><span>Pikachu-ex <small>150/128</small></span><b class="mono">62,51</b></label>
+              <label><input type="checkbox" checked data-v="26.85"><span>Mew-ex <small>158/128</small></span><b class="mono">26,85</b></label>
+              <label><input type="checkbox" checked data-v="20.53"><span>Mew-ex <small>216/91</small></span><b class="mono">20,53</b></label>
+              <output class="ledger-total mono" data-total="me">218,81 €</output>
+            </fieldset>
+            <fieldset class="ledger-side" data-side="them">
+              <legend class="mono">Camille</legend>
+              <label><input type="checkbox" checked data-v="244.75"><span>Dracaufeu-ex <small>234/91</small></span><b class="mono">244,75</b></label>
+              <label><input type="checkbox" checked data-v="6.97"><span>Mew-ex <small>151/165</small></span><b class="mono">6,97</b></label>
+              <output class="ledger-total mono" data-total="them">251,72 €</output>
+            </fieldset>
+          </div>
+          <p class="ledger-gap mono" aria-live="polite" data-gap>+32,91 € côté Camille</p>
+          <p class="ledger-hint">Décoche une carte pour voir l'écart bouger.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHIFFRES ================= -->
+    <section class="stats wrap" aria-label="En bref">
+      <dl>
+        <div><dt>cartes embarquées</dt><dd class="mono">54 848</dd></div>
+        <div><dt>langues lues</dt><dd class="mono">FR · EN · JP</dd></div>
+        <div><dt>images analysées par seconde</dt><dd class="mono">~5</dd></div>
+        <div><dt>compte, serveur, abonnement</dt><dd class="mono">0</dd></div>
+      </dl>
+    </section>
+
+    <!-- ================= FONCTIONNEMENT ================= -->
+    <section class="section wrap" id="fonctionnement">
+      <header class="section-head">
+        <p class="kicker mono">01 — Fonctionnement</p>
+        <h2>Trois gestes, du tapis au récap.</h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n mono">01</span>
+          <h3>Scanne</h3>
+          <p>Pose la carte dans le cadre-guide. Le nom et le numéro sont lus sur le téléphone,
+            puis rapprochés d'un catalogue embarqué. Aucune image ne quitte l'appareil.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n mono">02</span>
+          <h3>Cote</h3>
+          <p>La cote Cardmarket s'affiche en euros, par variante. Tu choisis la valeur de
+            référence&nbsp;: tendance, prix plancher, moyenne sur 7 ou 30&nbsp;jours.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n mono">03</span>
+          <h3>Équilibre</h3>
+          <p>Chaque carte se pose d'un tap côté <em>Moi</em> ou côté <em>Toi</em>. Tu décoches,
+            tu conviens d'un prix, l'écart suit. Le récap part en texte ou en image.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= FONCTIONNALITÉS ================= -->
+    <section class="section wrap" id="fonctionnalites">
+      <header class="section-head">
+        <p class="kicker mono">02 — Fonctionnalités</p>
+        <h2>Pensé pour une table de jeu, pas pour un bureau.</h2>
+      </header>
+
+      <div class="feature-groups">
+        <article class="fgroup reveal">
+          <h3 class="fgroup-title mono">Reconnaissance</h3>
+          <ul>
+            <li><strong>Hors-ligne, toujours.</strong> L'OCR tourne sur l'appareil, le catalogue est dans l'app.</li>
+            <li><strong>Français, anglais, japonais.</strong> L'app propose de changer de moteur quand la carte semble être dans une autre écriture&nbsp;; ランドロス s'affiche avec «&nbsp;Démétéros&nbsp;».</li>
+            <li><strong>Scan continu.</strong> Les signaux sont votés sur dix images&nbsp;: il suffit que le numéro soit lisible une fois.</li>
+            <li><strong>Prudent avant tout.</strong> Dans le doute, la liste des candidats s'ouvre et c'est toi qui tranches, d'un tap.</li>
+            <li><strong>Classeurs et pochettes.</strong> Seul le cadre-guide compte, les cartes voisines sont ignorées&nbsp;; un reflet sur le numéro, et l'app te dit d'incliner la carte.</li>
+            <li><strong>Mode manuel.</strong> Une photo à la pleine résolution du capteur, figée et analysée une fois.</li>
+          </ul>
+        </article>
+
+        <article class="fgroup reveal">
+          <h3 class="fgroup-title mono">Cotes</h3>
+          <ul>
+            <li><strong>Cardmarket, en euros.</strong> Normale, reverse ou holo&nbsp;: la cote suit la variante, avec le détail tendance, plancher et moyennes.</li>
+            <li><strong>Ta valeur de référence.</strong> Celle que tu lis en grand partout, et celle qu'un échange fige.</li>
+            <li><strong>Sans réseau, quand même.</strong> Une cote relevée depuis moins de 24&nbsp;h reste affichée, avec son heure.</li>
+            <li><strong>Voir ailleurs.</strong> Cardmarket, ventes réussies eBay et Pokécardex, à un tap depuis la fiche.</li>
+          </ul>
+        </article>
+
+        <article class="fgroup reveal">
+          <h3 class="fgroup-title mono">Échanges</h3>
+          <ul>
+            <li><strong>Deux côtés, deux noms.</strong> Ton nom et celui de la personne en face, totaux et écart en direct.</li>
+            <li><strong>Sur la table, ou retenue.</strong> Une carte décochée reste visible mais sort de l'écart.</li>
+            <li><strong>Prix convenu.</strong> Proposé à la cote arrondie au demi-euro, avec des raccourcis à 100, 90, 80 et 70&nbsp;%.</li>
+            <li><strong>Produit libre.</strong> Un booster, un display, une protection&nbsp;: tout ce qui n'est pas une carte.</li>
+            <li><strong>Récap partageable.</strong> En texte, ou en image avec les vignettes des cartes.</li>
+          </ul>
+        </article>
+
+        <article class="fgroup reveal">
+          <h3 class="fgroup-title mono">Recherche &amp; confort</h3>
+          <ul>
+            <li><strong>Par extension.</strong> Tape le numéro, choisis l'extension parmi les 186 séries françaises, classées par bloc et par date.</li>
+            <li><strong>Par rareté.</strong> Jusqu'aux Pikachu Rare du set 30&nbsp;ans, avec la cote sur chaque ligne.</li>
+            <li><strong>Fiche à feuilleter.</strong> Un glissement passe d'un résultat au suivant.</li>
+            <li><strong>Sombre ou clair.</strong> Le thème suit celui du téléphone.</li>
+            <li><strong>Catalogue à jour.</strong> Les nouvelles extensions arrivent depuis les réglages, d'un geste.</li>
+          </ul>
+        </article>
+      </div>
+
+      <figure class="recap reveal">
+        <img src="img/recap.webp" width="1080" height="1282" loading="lazy"
+             alt="Récapitulatif en image d'un échange avec Camille : quatre cartes côté Moi pour 218,81 €, deux côté Camille pour 251,72 €, écart de 32,91 €.">
+        <figcaption>
+          <p class="kicker mono">Le récap en image</p>
+          <p>Généré par l'app à la fin de l'échange, prêt à envoyer à l'autre joueur&nbsp;: les cartes
+            retenues de chaque côté, leur cote et l'écart final.</p>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= CAPTURES ================= -->
+    <section class="section" id="captures">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="kicker mono">03 — Captures</p>
+          <h2>En situation.</h2>
+          <p class="section-sub">Captures réelles de la version <span data-latest="version">v0.2.0</span>. Touche une image pour l'agrandir.</p>
+        </header>
+      </div>
+      <div class="gallery" tabindex="0" aria-label="Galerie de captures, défilement horizontal">
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/scan.webp" width="720" height="1600" loading="lazy" alt="Le viseur : une carte posée dans le cadre-guide.">
+          </button>
+          <figcaption><b>Scanner</b> La carte dans le cadre, le reste est ignoré.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/echange.webp" width="720" height="1600" loading="lazy" alt="Un échange en cours : quatre cartes côté Moi, totaux et écart en haut.">
+          </button>
+          <figcaption><b>Échange</b> Totaux, écart, et ce qui est retenu.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/fiche.webp" width="720" height="1600" loading="lazy" alt="Fiche de Dracaufeu-ex 234/91 avec la cote Cardmarket détaillée.">
+          </button>
+          <figcaption><b>Fiche</b> Cote détaillée et liens sortants.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/prix-convenu.webp" width="720" height="1600" loading="lazy" alt="Ligne d'échange en thème clair : prix convenu avec raccourcis 100, 90, 80 et 70 %.">
+          </button>
+          <figcaption><b>Prix convenu</b> Arrondi proposé, raccourcis en pourcentage.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/recherche.webp" width="720" height="1600" loading="lazy" alt="Recherche Mew-ex : chaque résultat avec sa vignette et sa cote.">
+          </button>
+          <figcaption><b>Recherche</b> Nom, numéro, rareté, extension.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/echange-clair.webp" width="720" height="1600" loading="lazy" alt="Le même échange, côté Camille, en thème clair.">
+          </button>
+          <figcaption><b>Thème clair</b> Pour les tables en plein jour.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button class="phone" type="button" data-zoom>
+            <img src="img/reglages.webp" width="720" height="1600" loading="lazy" alt="Réglages : ton nom, langue de lecture, valeur de référence et catalogue.">
+          </button>
+          <figcaption><b>Réglages</b> Ton nom, ta valeur de référence, le catalogue.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= VIE PRIVÉE ================= -->
+    <section class="section wrap privacy" id="vie-privee">
+      <header class="section-head">
+        <p class="kicker mono">04 — Vie privée</p>
+        <h2>Ce qui se passe sur ton téléphone y reste.</h2>
+      </header>
+      <div class="privacy-grid">
+        <ul class="checklist reveal">
+          <li>Pas de compte, pas d'inscription.</li>
+          <li>Pas de pub, pas de traceur, pas de statistiques d'usage.</li>
+          <li>La caméra et la reconnaissance fonctionnent sans réseau&nbsp;: aucune image n'est envoyée.</li>
+          <li>Tes échanges sont stockés sur l'appareil, nulle part ailleurs.</li>
+        </ul>
+        <div class="privacy-note reveal">
+          <p class="mono kicker">Ce qui passe par le réseau</p>
+          <p>Seulement les cotes (via <a href="https://tcgdex.dev" rel="noopener">TCGdex</a>) et les
+            illustrations des cartes. Sans connexion, tout le reste fonctionne.</p>
+          <p class="mono kicker">Et ce site&nbsp;?</p>
+          <p>Aucun cookie. Il demande seulement à GitHub le numéro de la dernière version.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TÉLÉCHARGER ================= -->
+    <section class="section wrap" id="telecharger">
+      <header class="section-head">
+        <p class="kicker mono">05 — Télécharger</p>
+        <h2>Gratuit, en APK, depuis GitHub.</h2>
+        <p class="section-sub">txSwap n'est pas sur le Play Store&nbsp;: l'APK signé est publié
+          sur <a href="https://github.com/txreplay/txswap-releases/releases" rel="noopener">github.com/txreplay/txswap-releases</a>.</p>
+      </header>
+
+      <div class="download">
+        <div class="dl-card reveal">
+          <div class="dl-main">
+            <p class="mono dl-label">Dernière version</p>
+            <p class="dl-version"><span data-latest="version">v0.2.0</span></p>
+            <p class="mono dl-meta">
+              <span data-latest="date">3 octobre 2026</span> · <span data-latest="size">49 Mo</span> · Android 8.0+
+            </p>
+            <a class="btn btn-big" href="https://github.com/txreplay/txswap-releases/releases/download/v0.2.0/txswap-0.2.0.apk"
+               data-latest="apk">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Télécharger <span data-latest="file">txswap-0.2.0.apk</span></span>
+            </a>
+            <div class="sha">
+              <p class="mono dl-label">Empreinte SHA-256</p>
+              <div class="sha-row">
+                <code data-latest="sha">9344f0b8f7efc731626e77b6a7fbe6f16349fddc06fb8d14f90464580830cd14</code>
+                <button class="copy mono" type="button" data-copy="sha">Copier</button>
+              </div>
+            </div>
+          </div>
+          <div class="dl-qr">
+            <div class="qr-frame">
+              <img src="img/qr-releases.svg" width="180" height="180"
+                   alt="QR code vers la page de la dernière version sur GitHub">
+            </div>
+            <p>Sur ordinateur&nbsp;? Scanne avec ton téléphone pour ouvrir la dernière version.</p>
+          </div>
+        </div>
+
+        <div class="ios reveal" id="ios">
+          <span class="ios-badge mono">Bientôt</span>
+          <h3>Sur iPhone</h3>
+          <p>Une version iOS est en préparation. Pas de date pour l'instant.</p>
+          <p class="ios-follow">Pour être prévenu, sur GitHub&nbsp;: <b>Watch → Custom → Releases</b> sur
+            <a href="https://github.com/txreplay/txswap-releases" rel="noopener">le dépôt des versions</a>.</p>
+        </div>
+      </div>
+
+      <div class="install" id="installer">
+        <article class="install-col reveal">
+          <h3><span class="mono tag">A</span> Installation directe</h3>
+          <ol class="howto">
+            <li>Sur le téléphone, touche <b>Télécharger</b> ci-dessus, ou ouvre la
+              <a href="https://github.com/txreplay/txswap-releases/releases/latest" rel="noopener">page de la dernière version</a>
+              et touche le fichier <code>.apk</code> dans <b>Assets</b>.</li>
+            <li>Ouvre le fichier téléchargé. Android demande d'autoriser les installations depuis
+              cette source (ton navigateur ou l'app Fichiers)&nbsp;: <b>Paramètres → Autoriser</b>, puis reviens.</li>
+            <li>Play Protect peut signaler une <i>application inconnue</i>&nbsp;: c'est attendu pour une app
+              hors Play Store. <b>Plus de détails → Installer quand même</b>.</li>
+            <li>Ouvre txSwap. La caméra n'est demandée qu'à la première ouverture du scanner.</li>
+          </ol>
+          <details class="verify">
+            <summary>Vérifier l'APK avant de l'installer</summary>
+            <p>Compare l'empreinte du fichier téléchargé à celle affichée plus haut&nbsp;:</p>
+            <pre><code>shasum -a 256 <span data-latest="file">txswap-0.2.0.apk</span></code></pre>
+            <p>Sous Windows&nbsp;: <code>certutil -hashfile <span data-latest="file">txswap-0.2.0.apk</span> SHA256</code></p>
+          </details>
+        </article>
+
+        <article class="install-col reveal">
+          <h3><span class="mono tag">B</span> Avec Obtainium <small>— mises à jour automatiques</small></h3>
+          <ol class="howto">
+            <li>Installe <a href="https://github.com/ImranR98/Obtainium/releases/latest" rel="noopener">Obtainium</a>,
+              un gestionnaire libre qui suit les apps publiées sur GitHub.</li>
+            <li>Dans Obtainium, touche <b>Ajouter une app</b> et colle l'adresse&nbsp;:
+              <span class="copy-line">
+                <code data-copy-src="repo">https://github.com/txreplay/txswap-releases</code>
+                <button class="copy mono" type="button" data-copy="repo">Copier</button>
+              </span>
+            </li>
+            <li>Touche <b>Ajouter</b>, puis <b>Installer</b>.</li>
+            <li>À chaque nouvelle version, Obtainium te prévient et l'installe par-dessus.</li>
+          </ol>
+          <p class="callout">
+            <b>Mettre à jour sans rien perdre&nbsp;:</b> installe la nouvelle version <em>par-dessus</em>
+            l'ancienne. Désinstaller txSwap efface tes échanges.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= NOUVEAUTÉS ================= -->
+    <section class="section wrap" id="nouveautes">
+      <header class="section-head">
+        <p class="kicker mono">06 — Nouveautés</p>
+        <h2>Journal des versions.</h2>
+      </header>
+      <div class="changelog" data-changelog>
+        <noscript><p>Le journal des versions s'affiche avec JavaScript. Il est aussi sur
+          <a href="https://github.com/txreplay/txswap-releases/releases">GitHub</a>.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section wrap" id="faq">
+      <header class="section-head">
+        <p class="kicker mono">07 — Questions</p>
+        <h2>Questions fréquentes.</h2>
+      </header>
+      <div class="faq">
+        <details>
+          <summary>Pourquoi txSwap n'est-il pas sur le Play Store&nbsp;?</summary>
+          <p>C'est un projet indépendant, distribué directement en APK signé. Ça évite les frais et les délais
+            de publication, et chaque version est publiée sur GitHub avec son empreinte SHA-256.</p>
+        </details>
+        <details>
+          <summary>Play Protect m'affiche un avertissement, c'est normal&nbsp;?</summary>
+          <p>Oui. Android avertit pour toute application installée hors du Play Store. Tu peux vérifier que
+            le fichier est bien celui publié en comparant son empreinte SHA-256, puis choisir
+            <b>Installer quand même</b>.</p>
+        </details>
+        <details>
+          <summary>Mon téléphone est-il compatible&nbsp;?</summary>
+          <p>Il faut Android 8.0 ou plus récent, sur un processeur 64 bits ARM (<code>arm64-v8a</code>)&nbsp;: c'est le cas
+            de presque tous les téléphones sortis depuis 2017. Les tablettes x86 et les vieux téléphones 32 bits
+            ne sont pas pris en charge.</p>
+        </details>
+        <details>
+          <summary>Faut-il une connexion internet&nbsp;?</summary>
+          <p>Pas pour reconnaître les cartes ni pour mener un échange. La connexion sert à récupérer les cotes
+            et les illustrations. Une cote relevée depuis moins de 24&nbsp;h reste affichée hors-ligne.</p>
+        </details>
+        <details>
+          <summary>D'où viennent les prix&nbsp;?</summary>
+          <p>De Cardmarket, via <a href="https://tcgdex.dev" rel="noopener">TCGdex</a>. C'est un instantané quotidien,
+            toutes langues et tous états confondus. Tu choisis dans les réglages la valeur qui fait référence&nbsp;:
+            tendance, à partir de, moyenne sur 7 ou 30&nbsp;jours.</p>
+        </details>
+        <details>
+          <summary>Est-ce que txSwap gère ma collection&nbsp;?</summary>
+          <p>Non, et c'est voulu&nbsp;: txSwap sert à conduire un échange. Pour ta collection, la fiche de chaque carte
+            ouvre <a href="https://www.pokecardex.com" rel="noopener">Pokécardex</a>.</p>
+        </details>
+        <details>
+          <summary>Comment mettre à jour sans perdre mes échanges&nbsp;?</summary>
+          <p>Installe la nouvelle version par-dessus l'ancienne, à la main ou avec Obtainium. Ne désinstalle pas
+            l'app avant&nbsp;: la désinstallation efface les échanges enregistrés.</p>
+        </details>
+        <details>
+          <summary>Et sur iPhone&nbsp;?</summary>
+          <p>Une version iOS est en préparation. Elle sera annoncée ici et sur le
+            <a href="https://github.com/txreplay/txswap-releases" rel="noopener">dépôt des versions</a>.</p>
+        </details>
+        <details>
+          <summary>Combien ça coûte&nbsp;?</summary>
+          <p>Rien. Pas de pub, pas d'abonnement, pas d'achat intégré.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <div class="foot-brand">
+        <a class="brand" href="#"><img src="img/logo.svg" alt="" width="22" height="27"><span>txSwap</span></a>
+        <p><i>Swap</i>&nbsp;: un échange de cartes entre deux joueurs, sans argent.</p>
+      </div>
+      <nav class="foot-links" aria-label="Liens de pied de page">
+        <a href="#telecharger">Télécharger</a>
+        <a href="#nouveautes">Nouveautés</a>
+        <a href="https://github.com/txreplay/txswap-releases/releases" rel="noopener">Versions sur GitHub</a>
+      </nav>
+      <p class="legal">
+        txSwap est un projet indépendant, non affilié à The Pokémon Company, Nintendo, Creatures,
+        GAME FREAK, Cardmarket, eBay ni Pokécardex, et non approuvé par eux. Pokémon et les noms des personnages sont
+        des marques de leurs détenteurs respectifs&nbsp;; les illustrations de cartes visibles sur les captures
+        leur appartiennent. Données des cartes et cotes&nbsp;: <a href="https://tcgdex.dev" rel="noopener">TCGdex</a>.
+      </p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Capture agrandie">
+    <img src="" alt="">
+    <button type="button" class="lightbox-close" aria-label="Fermer">×</button>
+  </dialog>
+
+  <script src="js/releases.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
