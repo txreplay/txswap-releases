@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>txSwap — l'échange de cartes Pokémon, réglé à la table</title>
-  <meta name="description" content="txSwap scanne les cartes Pokémon posées sur la table, les reconnaît hors-ligne, les cote sur Cardmarket et calcule l'écart de l'échange. Application Android gratuite, sans compte.">
+  <meta name="description" content="txSwap scanne les cartes Pokémon posées sur la table, les reconnaît hors-ligne, les cote sur Cardmarket et calcule l'écart de l'échange. Application gratuite pour Android et iPhone, sans compte.">
   <meta name="theme-color" content="#0B0C0E">
   <meta name="color-scheme" content="dark">
 
@@ -12,7 +12,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="txSwap">
   <meta property="og:title" content="txSwap — scanne, cote, équilibre">
-  <meta property="og:description" content="L'échange de cartes Pokémon, réglé à la table. Reconnaissance 100 % hors-ligne, cote Cardmarket, écart recalculé à chaque coche. Android, gratuit.">
+  <meta property="og:description" content="L'échange de cartes Pokémon, réglé à la table. Reconnaissance 100 % hors-ligne, cote Cardmarket, écart recalculé à chaque coche. Android et iPhone, gratuit.">
   <link rel="canonical" href="https://txreplay.github.io/txswap-releases/">
   <meta property="og:url" content="https://txreplay.github.io/txswap-releases/">
   <meta property="og:image" content="https://txreplay.github.io/txswap-releases/img/og.png">
@@ -24,7 +24,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/space-grotesk-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/jetbrains-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -54,7 +54,7 @@
       <div class="hero-copy">
         <p class="eyebrow reveal">
           <span class="dot" aria-hidden="true"></span>
-          Android · gratuit · <span data-latest="version">v0.2.0</span>
+          Android · iPhone · gratuit · <span data-latest="version">v0.2.0</span>
         </p>
         <h1 class="reveal">L'échange de cartes,<br><em>réglé à la table.</em></h1>
         <p class="lead reveal">
@@ -70,7 +70,7 @@
           <a class="btn btn-ghost" href="#installer">Comment l'installer</a>
         </div>
         <p class="hero-meta mono reveal">
-          Android 8.0+ · <span data-latest="size">49 Mo</span> · iPhone&nbsp;: bientôt
+          Android 8.0+ · <span data-latest="size">49 Mo</span> · iPhone&nbsp;: <a href="#installer-ios">SideStore ou AltStore</a>
         </p>
       </div>
 
@@ -289,9 +289,9 @@
     <section class="section wrap" id="telecharger">
       <header class="section-head">
         <p class="kicker mono">05 — Télécharger</p>
-        <h2>Gratuit, en APK, depuis GitHub.</h2>
-        <p class="section-sub">txSwap n'est pas sur le Play Store&nbsp;: l'APK signé est publié
-          sur <a href="https://github.com/txreplay/txswap-releases/releases" rel="noopener">github.com/txreplay/txswap-releases</a>.</p>
+        <h2>Gratuit, sur Android et iPhone, depuis GitHub.</h2>
+        <p class="section-sub">txSwap n'est ni sur le Play Store ni sur l'App Store&nbsp;: l'APK signé et
+          l'app iOS sont publiés sur <a href="https://github.com/txreplay/txswap-releases/releases" rel="noopener">github.com/txreplay/txswap-releases</a>.</p>
       </header>
 
       <div class="download">
@@ -325,11 +325,11 @@
         </div>
 
         <div class="ios reveal" id="ios">
-          <span class="ios-badge mono">Bientôt</span>
+          <span class="ios-badge mono">Nouveau</span>
           <h3>Sur iPhone</h3>
-          <p>Une version iOS est en préparation. Pas de date pour l'instant.</p>
-          <p class="ios-follow">Pour être prévenu, sur GitHub&nbsp;: <b>Watch → Custom → Releases</b> sur
-            <a href="https://github.com/txreplay/txswap-releases" rel="noopener">le dépôt des versions</a>.</p>
+          <p>L'app iOS s'installe avec SideStore ou AltStore, gratuits&nbsp;: ils la signent avec ton
+            compte Apple. iOS 16 minimum.</p>
+          <p class="ios-follow"><a href="#installer-ios">Voir l'installation sur iPhone</a></p>
         </div>
       </div>
 
@@ -371,6 +371,29 @@
           <p class="callout">
             <b>Mettre à jour sans rien perdre&nbsp;:</b> installe la nouvelle version <em>par-dessus</em>
             l'ancienne. Désinstaller txSwap efface tes échanges.
+          </p>
+        </article>
+
+        <article class="install-col install-wide reveal" id="installer-ios">
+          <h3><span class="mono tag">C</span> Sur iPhone <small>— avec SideStore ou AltStore</small></h3>
+          <ol class="howto">
+            <li>Installe <a href="https://sidestore.io" rel="noopener">SideStore</a> ou
+              <a href="https://altstore.io" rel="noopener">AltStore</a>. Leur guide d'installation demande
+              un ordinateur une première fois, et ton identifiant Apple&nbsp;: c'est lui qui signe les apps.</li>
+            <li>Dans l'onglet <b>Sources</b>, ajoute l'adresse&nbsp;:
+              <span class="copy-line">
+                <code data-copy-src="altstore">https://txreplay.github.io/txswap-releases/altstore.json</code>
+                <button class="copy mono" type="button" data-copy="altstore">Copier</button>
+              </span>
+            </li>
+            <li>Ouvre la source txSwap et touche <b>Installer</b>. Les nouvelles versions y apparaissent
+              d'elles-mêmes.</li>
+            <li>Avec un compte Apple gratuit, l'app est à <b>rafraîchir tous les 7 jours</b>&nbsp;: SideStore
+              le fait depuis l'iPhone, AltStore depuis l'ordinateur où tourne AltServer.</li>
+          </ol>
+          <p class="callout">
+            <b>Mettre à jour sans rien perdre&nbsp;:</b> installe la nouvelle version depuis la source,
+            par-dessus l'ancienne. Supprimer l'app efface tes échanges.
           </p>
         </article>
       </div>
@@ -435,8 +458,9 @@
         </details>
         <details>
           <summary>Et sur iPhone&nbsp;?</summary>
-          <p>Une version iOS est en préparation. Elle sera annoncée ici et sur le
-            <a href="https://github.com/txreplay/txswap-releases" rel="noopener">dépôt des versions</a>.</p>
+          <p>Oui, à partir d'iOS 16, hors App Store&nbsp;: voir <a href="#installer-ios">l'installation sur iPhone</a>.
+            La reconnaissance y passe par celle d'Apple plutôt que par celle de Google&nbsp;; elle a été
+            éprouvée sur moins de cartes qu'Android.</p>
         </details>
         <details>
           <summary>Combien ça coûte&nbsp;?</summary>
@@ -487,8 +511,8 @@
         </div>
 
         <div class="field" data-hide="idee">
-          <label for="f-device">Téléphone et Android <span class="opt">facultatif</span></label>
-          <input id="f-device" name="device" type="text" maxlength="80" placeholder="Ex. : Pixel 7, Android 14">
+          <label for="f-device">Téléphone et système <span class="opt">facultatif</span></label>
+          <input id="f-device" name="device" type="text" maxlength="80" placeholder="Ex. : Pixel 7, Android 14 · iPhone 13, iOS 18">
         </div>
 
         <div class="contact-foot field-wide">
