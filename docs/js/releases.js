@@ -13,15 +13,25 @@ window.TXSWAP_RELEASES = {
   repo: "txreplay/txswap-releases",
 
   fallback: {
-    version: "0.2.0",
-    date: "2026-10-03",
-    file: "txswap-0.2.0.apk",
-    size: 50911373,
-    sha256: "9344f0b8f7efc731626e77b6a7fbe6f16349fddc06fb8d14f90464580830cd14",
+    version: "0.3.0",
+    date: "2026-10-04",
+    file: "txswap-0.3.0.apk",
+    size: 54817782,
+    sha256: "550a7f881609ddc2ab8837aaa38cda4f5b536008de28aaa20862b015fc85fff3",
   },
 
   // kind : "new" (Nouveau), "better" (Amélioré), "fix" (Corrigé)
   changelog: [
+    {
+      version: "0.3.0",
+      date: "2026-10-04",
+      title: "txSwap sur iPhone",
+      items: [
+        ["new", "txSwap arrive sur iPhone : la même app, à installer avec SideStore ou AltStore depuis la source txSwap. iOS 16 minimum."],
+        ["new", "Sur iPhone, la lecture des cartes passe par la reconnaissance de texte d'Apple, sur l'appareil comme sur Android."],
+        ["better", "Android : l'app repose désormais sur la même base que la version iPhone. Rien ne change à l'usage ; échanges, réglages et cotes en cache sont conservés à la mise à jour."],
+      ],
+    },
     {
       version: "0.2.0",
       date: "2026-10-03",
