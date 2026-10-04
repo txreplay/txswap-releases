@@ -1,0 +1,40 @@
+{
+  "name": "txSwap",
+  "identifier": "fr.txreplay.txswap.source",
+  "subtitle": "Scanner de cartes Pokémon pour échanger",
+  "description": "Les versions iOS de txSwap, construites à chaque tag et publiées sur github.com/txreplay/txswap-releases.",
+  "iconURL": "https://txreplay.github.io/txswap-releases/img/icon-ios.png",
+  "website": "https://txreplay.github.io/txswap-releases/",
+  "tintColor": "B7F04A",
+  "apps": [
+    {
+      "name": "txSwap",
+      "bundleIdentifier": "fr.txreplay.txswap",
+      "developerName": "txreplay",
+      "subtitle": "Scanner de cartes Pokémon pour échanger",
+      "localizedDescription": "Scanne une carte, lis sa cote, monte un échange à deux côtés et partage le récap. Identification hors-ligne sur un catalogue embarqué, en français, anglais et japonais.",
+      "iconURL": "https://txreplay.github.io/txswap-releases/img/icon-ios.png",
+      "tintColor": "B7F04A",
+      "category": "utilities",
+      "screenshotURLs": [],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "Le scan lit la carte par la caméra. Aucune image ne quitte l'appareil."
+        }
+      },
+      "versions": [
+        {
+          "version": "0.3.0",
+          "buildVersion": "300",
+          "date": "2026-10-04",
+          "localizedDescription": "txSwap 0.3.0 — le détail est dans le journal des versions du site.",
+          "downloadURL": "https://github.com/txreplay/txswap-releases/releases/download/v0.3.0/txswap-0.3.0.ipa",
+          "size": 19256744,
+          "minOSVersion": "16.0"
+        }
+      ]
+    }
+  ],
+  "news": []
+}
