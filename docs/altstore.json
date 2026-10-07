@@ -25,6 +25,15 @@
       },
       "versions": [
         {
+          "version": "0.4.0",
+          "buildVersion": "400",
+          "date": "2026-10-07",
+          "localizedDescription": "txSwap 0.4.0 — le détail est dans le journal des versions du site.",
+          "downloadURL": "https://github.com/txreplay/txswap-releases/releases/download/v0.4.0/txswap-0.4.0.ipa",
+          "size": 19306774,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "0.3.0",
           "buildVersion": "300",
           "date": "2026-10-04",
